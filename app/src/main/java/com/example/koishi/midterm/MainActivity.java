@@ -17,4 +17,10 @@ public class MainActivity extends AppCompatActivity {
     private void setEventHandlers() {
 
     }
+
+    @Override
+    protected void onDestroy() {
+        businessLogic.closeDataBase();
+        super.onDestroy();
+    }
 }

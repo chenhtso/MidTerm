@@ -29,15 +29,22 @@ public class BusinessLogic {
     }
 
     public boolean deleteCharacter() {
+
         return false;
     }
 
     public boolean editCharacter() {
+
         return false;
     }
 
     public boolean queryCharacter() {
+
         return false;
+    }
+
+    public void closeDataBase() {
+        dataBaseHelper.close();
     }
 }
 
