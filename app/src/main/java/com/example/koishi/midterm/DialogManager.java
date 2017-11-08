@@ -23,6 +23,10 @@ public class DialogManager {
     }
 
     public class UserInput {
-
+        public String name;
+        public String sex;
+        public String kingdom;
+        public String birthAndDeathYears;
+        public String birthplace;
     }
 }

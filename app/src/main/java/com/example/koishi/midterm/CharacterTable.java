@@ -22,7 +22,7 @@ public final class CharacterTable {
         public static final String sexColumn = "Sex";
         public static final String kingdomColumn = "Kingdom";
         public static final String birthAndDeathYearsColumn = "BirthAndDeathYears";
-        public static final String birthplace = "Birthplace";
+        public static final String birthplaceColumn = "Birthplace";
     }
 }
 
