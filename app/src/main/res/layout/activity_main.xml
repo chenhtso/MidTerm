@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.koishi.midterm.MainActivity">
 
-   <ListView
+
+    <ListView
         android:id="@+id/characterlist"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
