@@ -1,8 +1,8 @@
 package com.example.koishi.midterm;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by Koishi on 11/3/2017.
@@ -12,14 +12,12 @@ public class BusinessLogic {
     private String error;
     private Context context;
     private DataBaseHelper dataBaseHelper;
-    private SQLiteDatabase DBForWrite;
-    private SQLiteDatabase DBForRead;
+    private SQLiteDatabase database;
 
     public BusinessLogic(Context context) {
         this.context = context;
         dataBaseHelper = new DataBaseHelper(context);
-        DBForRead = dataBaseHelper.getReadableDatabase();
-        DBForWrite = dataBaseHelper.getWritableDatabase();
+        database = dataBaseHelper.getWritableDatabase();
     }
 
 
@@ -41,6 +39,10 @@ public class BusinessLogic {
     public boolean queryCharacter() {
 
         return false;
+    }
+
+    public Cursor getAllCharacters() {
+        return database.rawQuery("select * from " + CharacterTable.tableName, null);
     }
 
     public void closeDataBase() {

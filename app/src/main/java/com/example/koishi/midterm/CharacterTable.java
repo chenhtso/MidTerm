@@ -12,9 +12,11 @@ public final class CharacterTable {
     private CharacterTable() {
     }
 
+    public static final String tableName = "Character";
+
     /* Inner class that defines the table contents */
     public static class CharacterEntry implements BaseColumns {
-        public static final String tableName = "Character";
+
         public static final String avatarColumn = "Avatar";
         public static final String nameColumn = "Name";
         public static final String sexColumn = "Sex";
