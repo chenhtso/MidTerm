@@ -1,5 +1,6 @@
 package com.example.koishi.midterm;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.SimpleCursorAdapter;
@@ -13,9 +14,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeList();
         businessLogic = new BusinessLogic(this);
         dialogManager = new DialogManager(this);
+        initializeList();
     }
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeList() {
+        Cursor cursor = businessLogic.getAllCharacters();
 
     }
 
