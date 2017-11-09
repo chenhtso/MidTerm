@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeList() {
         Cursor cursor = businessLogic.getAllCharacters();
+        String[] from = new String[]{};
+        int[] to = new int[]{};
+
+        SimpleCursorAdapter.ViewBinder viewBinder = new SimpleCursorAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Cursor cursor, int i) {
+                return false;
+            }
+        };
+
 
     }
 
