@@ -4,7 +4,7 @@
         <item>男</item>
         <item>女</item>
     </string-array>
-    <string-array name="dialog_power">
+    <string-array name="dialog_kingdom">
         <item>魏</item>
         <item>蜀</item>
         <item>吴</item>
