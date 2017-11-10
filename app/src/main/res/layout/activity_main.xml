@@ -20,7 +20,7 @@
         android:layout_marginBottom="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="增删改查"
+        android:text="编辑辞典"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

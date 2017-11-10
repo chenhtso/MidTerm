@@ -42,7 +42,7 @@ public class BusinessLogic {
     }
 
     public Cursor getAllCharacters() {
-        return database.rawQuery("select * from " + CharacterTable.tableName, null);
+        return database.rawQuery("select Name as _id, * from " + CharacterTable.tableName, null);
     }
 
     public void closeDataBase() {
