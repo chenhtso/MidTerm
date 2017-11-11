@@ -69,7 +69,7 @@ class BusinessLogic {
         for (String column : columns) {
             String parameter = data.getStringExtra(column);
             if (parameter != null) {
-                if (Objects.equals(column, CharacterTable.CharacterEntry.avatarColumn)) {
+                if (column.equals(CharacterTable.CharacterEntry.avatarColumn)) {
                     Bitmap bitmap = BitmapFactory.decodeFile(parameter);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);

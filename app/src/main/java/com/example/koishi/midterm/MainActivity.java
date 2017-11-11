@@ -96,8 +96,15 @@ public class MainActivity extends AppCompatActivity {
 
             boolean succeed = false;
 
+            Cursor queryCursor = businessLogic.queryCharacter(name);
+            boolean existed = queryCursor.moveToFirst();
+
             switch (operationType) {
                 case "add": {
+                    if (existed) {
+                        succeed = false;
+                        break;
+                    }
                     succeed = businessLogic.addCharacter(data);
                     break;
                 }
@@ -110,22 +117,26 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
                 case "query": {
-                    Cursor queryCursor = businessLogic.queryCharacter(name);
-                    succeed = queryCursor.moveToFirst();
+                    succeed = existed;
                     break;
                 }
             }
 
             if (succeed) {
-                changeListView();
+                if (operationType.equals("query")) {
+                    changeListView(queryCursor);
+                } else {
+                    changeListView(businessLogic.getAllCharacters());
+                }
+
             } else {
                 Toast.makeText(this, "操作失败！请检查输入参数是否无误", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void changeListView() {
-        simpleCursorAdapter.swapCursor(businessLogic.getAllCharacters());
+    private void changeListView(Cursor cursor) {
+        simpleCursorAdapter.swapCursor(cursor);
         simpleCursorAdapter.notifyDataSetChanged();
     }
 
