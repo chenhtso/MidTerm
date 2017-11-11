@@ -15,7 +15,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private BusinessLogic businessLogic;
     private SimpleCursorAdapter simpleCursorAdapter;
-    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeList() {
-        listView = findViewById(R.id.characterList);
+        ListView listView = findViewById(R.id.characterList);
         Cursor cursor = businessLogic.getAllCharacters();
 
         String[] from = new String[]{
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
 
             String operationType = data.getStringExtra("operationType");
-            String name = data.getStringExtra("name");
+            String name = data.getStringExtra(CharacterTable.CharacterEntry.nameColumn);
 
             boolean succeed = false;
 
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
                 case "edit": {
-                    succeed = businessLogic.editCharacter(data);
+                    succeed = businessLogic.editCharacter(name, data);
                     break;
                 }
                 case "query": {
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             if (succeed) {
                 changeListView();
             } else {
-                Toast.makeText(this, "操作失败！请检查输入参数是否正确", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "操作失败！请检查输入参数是否无误", Toast.LENGTH_SHORT).show();
             }
         }
     }

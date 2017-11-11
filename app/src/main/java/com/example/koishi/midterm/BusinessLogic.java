@@ -11,50 +11,46 @@ import android.graphics.BitmapFactory;
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
-/**
- * Created by Koishi on 11/3/2017.
- */
 
-public class BusinessLogic {
+class BusinessLogic {
     private DataBaseHelper dataBaseHelper;
     private SQLiteDatabase database;
 
-    public BusinessLogic(Context context) {
+    BusinessLogic(Context context) {
         dataBaseHelper = new DataBaseHelper(context);
         database = dataBaseHelper.getWritableDatabase();
     }
 
 
-    public boolean addCharacter(Intent data) {
+    boolean addCharacter(Intent data) {
         ContentValues contentValues = fromIntentDataToContentValues(data);
         long result = database.insert(CharacterTable.tableName, null, contentValues);
         return result != -1;
     }
 
-    public boolean deleteCharacter(String name) {
+    boolean deleteCharacter(String name) {
         String selection = CharacterTable.CharacterEntry.nameColumn + " = '" + name + "'";
         database.delete(CharacterTable.tableName, selection, null);
         return true;
     }
 
-    public boolean editCharacter(Intent data) {
-        String name = data.getStringExtra(CharacterTable.CharacterEntry.nameColumn);
+    boolean editCharacter(String name, Intent data) {
         String selection = CharacterTable.CharacterEntry.nameColumn + " = '" + name + "'";
         ContentValues contentValues = fromIntentDataToContentValues(data);
         database.update(CharacterTable.tableName, contentValues, selection, null);
         return true;
     }
 
-    public Cursor queryCharacter(String name) {
+    Cursor queryCharacter(String name) {
         String selection = CharacterTable.CharacterEntry.nameColumn + " = '" + name + "'";
         return database.query(CharacterTable.tableName, null, selection, null, null, null, null);
     }
 
-    public Cursor getAllCharacters() {
+    Cursor getAllCharacters() {
         return database.rawQuery("select Name as _id, * from " + CharacterTable.tableName, null);
     }
 
-    public void closeDataBase() {
+    void closeDataBase() {
         dataBaseHelper.close();
     }
 

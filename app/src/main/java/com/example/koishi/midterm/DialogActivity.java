@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by Koishi on 11/8/2017.
- */
 
 public class DialogActivity extends AppCompatActivity {
     // 表格内容， 分别为姓名、性别、势力、生卒年份、籍贯、头像文件的路径
