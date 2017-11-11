@@ -30,6 +30,14 @@ public class DialogActivity extends AppCompatActivity {
 
     // 设置事件监听器获取用户输入
     private void setEventHandlers() {
+        //TODO 检测操作的类型
+        //TODO 根据操作类型调整输入框
+        //TODO 获取用户输入
+        //TODO 根据用户输入调整确认按钮
+        //TODO 点击确认按钮要返回数据
 
+
+        //TODO 输入合法性检查 组长负责
+        //TODO 选择头像需要特殊处理 组长负责
     }
 }
