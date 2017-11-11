@@ -1,64 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
     <ImageView
         android:id="@+id/avatarItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp" />
+        android:layout_marginStart="20dp"
+        />
 
     <TextView
         android:id="@+id/nameItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@id/avatarItem"
+        android:layout_marginLeft="15dp"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/sexItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@id/nameItem"
+        android:layout_marginLeft="15dp"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/kingdomItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@id/sexItem"
+        android:layout_marginLeft="15dp"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/birthAndDeathYearsItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="10dp"
+        android:layout_below="@+id/nameItem"
+        android:layout_marginLeft="15dp"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/birthplaceItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="10dp"
+        android:layout_below="@id/kingdomItem"
+        android:layout_toRightOf="@id/birthAndDeathYearsItem"
+        android:layout_marginLeft="15dp"
         android:padding="15dp"
         android:textColor="#000000"
         android:textSize="20sp" />
 
 
-</LinearLayout>
+</RelativeLayout>
