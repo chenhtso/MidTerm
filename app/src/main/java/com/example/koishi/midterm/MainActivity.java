@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private BusinessLogic businessLogic;
     private SimpleCursorAdapter simpleCursorAdapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeList() {
-        ListView listView = findViewById(R.id.characterList);
+        listView = findViewById(R.id.characterList);
         Cursor cursor = businessLogic.getAllCharacters();
 
         String[] from = new String[]{
@@ -69,19 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
         simpleCursorAdapter.setViewBinder(viewBinder);
         listView.setAdapter(simpleCursorAdapter);
-
     }
 
     // 设置事件监听器
     private void setEventHandlers() {
-        Button button = findViewById(R.id.dialog);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button operationButton = findViewById(R.id.dialog);
+        operationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DialogActivity.class);
                 startActivity(intent);
             }
         });
+
+        //TODO Reset Button
     }
 
     @Override
@@ -89,6 +92,43 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
 
+            String operationType = data.getStringExtra("operationType");
+            String name = data.getStringExtra("name");
+
+            boolean succeed = false;
+
+            switch (operationType) {
+                case "add": {
+                    succeed = businessLogic.addCharacter(data);
+                    break;
+                }
+                case "delete": {
+                    succeed = businessLogic.deleteCharacter(name);
+                    break;
+                }
+                case "edit": {
+                    succeed = businessLogic.editCharacter(data);
+                    break;
+                }
+                case "query": {
+                    Cursor queryCursor = businessLogic.queryCharacter(name);
+                    succeed = queryCursor.moveToFirst();
+                    break;
+                }
+            }
+
+            if (succeed) {
+                changeListView();
+            } else {
+                Toast.makeText(this, "操作失败！请检查输入参数是否正确", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
+    private void changeListView() {
+        simpleCursorAdapter.swapCursor(businessLogic.getAllCharacters());
+        simpleCursorAdapter.notifyDataSetChanged();
+    }
+
+
 }
